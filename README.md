@@ -1,6 +1,6 @@
-# Web Scraper
+> **🎵 Vibe Coding Projects** - These projects were/will be built entirely using GitHub Copilot's (or similarly trained LLM's) natural language capabilities. No manual code writing—just chat-based development! I only write code manually if Copilot can't accomplish what I need.
 
-> **🎵 Vibe Coding Project** - This project was built entirely using GitHub Copilot's natural language capabilities. No manual code writing—just chat-based development! I only write code manually if Copilot can't accomplish what I need.
+# Web Scraper
 
 A simple Python web scraper that extracts useful information from websites.
 
