@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Web Scraper UI</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    input[type=text] { width: 60%; padding: 0.5rem; }
+    button { padding: 0.5rem 1rem; }
+    pre { background:#acd0f3; padding:1rem; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <h1>Web Scraper (Demo)</h1>
+  <p>Enter a URL and click <strong>Scrape</strong> to see the JSON output.</p>
+
+  <input id="url" type="text" placeholder="https://example.com" />
+  <button id="scrape">Scrape</button>
+
+  <h2>Result</h2>
+  <div id="result"><em>No results yet</em></div>
+
+  <script>
+    document.getElementById('scrape').addEventListener('click', async () => {
+      const url = document.getElementById('url').value.trim();
+      if (!url) return alert('Please enter a URL');
+
+      const resDiv = document.getElementById('result');
+      resDiv.textContent = 'Loading...';
+
+      try {
+        const resp = await fetch(`/scrape?url=${encodeURIComponent(url)}`);
+        const data = await resp.json();
+        if (!resp.ok) {
+          resDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        } else {
+          resDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+      } catch (err) {
+        resDiv.textContent = 'Request failed: ' + err;
+      }
+    });
+  </script>
+</body>
+</html>
